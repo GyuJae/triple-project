@@ -1,5 +1,4 @@
-/* eslint-disable import/order */
-import App from './App'
+import App from './pages/App'
 import { GlobalStyles, theme } from './styles'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
