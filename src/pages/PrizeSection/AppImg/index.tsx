@@ -1,7 +1,9 @@
 import logo from '@/assets/triple2x.png';
 import styled from 'styled-components';
+import { motion } from 'framer-motion'
+import { itemVar } from '@/animations/prizeSection';
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -21,7 +23,7 @@ const Date = styled.span`
 
 const AppImage = () => {
   return (
-    <Container>
+    <Container variants={itemVar}>
       <Image src={logo} alt="triple2x" />
       <Date>2021년 12월 기준</Date>
     </Container>
