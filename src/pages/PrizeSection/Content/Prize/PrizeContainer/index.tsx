@@ -27,7 +27,7 @@ const Content = styled.div`
 const PrizeContainer = ({ iconPath, category, prize }:IProps) => {
   return (
     <Container>
-      <Icon src={iconPath} />
+      <Icon src={iconPath} alt={prize} />
       <Content>
         <span>{category}</span>
         <span>{prize}</span>

@@ -16,7 +16,8 @@ const PrizeSection = () => {
     <Wrapper
       initial='initial'
       variants={containerVar}
-      animate='animate'
+      whileInView='animate'
+      viewport={{ once: true, amount: 0.9 }}
     >
       <AppImage />
       <Content />

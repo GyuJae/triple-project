@@ -14,9 +14,9 @@ const CounterContainer = styled(motion.div)`
 const Counter = () => {
   return (
     <CounterContainer variants={itemVar}>
-      <Summary count={700} unit='명' category='여행자' />
-      <Summary count={100} category='여행리뷰' />
-      <Summary count={470} category='여행일정' />
+      <Summary count={350} unit='명' category='사용자' />
+      <Summary count={21} category='리뷰' />
+      <Summary count={650} category='저장' />
     </CounterContainer>
   )
 }

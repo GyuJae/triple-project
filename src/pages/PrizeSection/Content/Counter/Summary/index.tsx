@@ -14,7 +14,8 @@ const Container = styled.div`
   }
 `
 
-const Summary = ({ count, category, unit = '개'}:IProps) => {
+const Summary = ({ count, category, unit = '개' }: IProps) => {
+  
   return (
     <Container>
       <strong>{count}만 {unit}</strong>
