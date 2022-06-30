@@ -1,31 +1,116 @@
-# TRIPLE PROJECT
+# 🔥 Wanted 개인과제 - 영화 웹 만들기
 
-● 문구, 이미지의 레이아웃과 스타일은 트리플 홈페이지와 동일해야 합니다. 단,
-반응형 레이아웃은 고려하지 않습니다. 최소 화면 폭을 1200px로 고정합니다. [X]
-● React를 이용하여 개발합니다. 그 외의 개발 스택은 자유롭게 구성합니다. [X]
-● Google Chrome 최신 버전에서 동작해야 합니다. [X]
-● README.md를 작성합니다. 아래 내용을 반드시 포함하되, 이외 내용은 자유롭게
-추가할 수 있습니다. []
-○ 프로젝트 실행 방법 []
-○ 사용한 기술과 선택한 이유 []
-● 린팅/포매팅 셋업 시 titicacadev/eslint-config-triple을 적용해주세요. [X]
+<img src="https://user-images.githubusercontent.com/58322754/176611633-de1d61ca-4efd-42d8-9f06-c8c6cc8a978c.png">
 
-● 좌측 이미지, 지표 문구, 수상 내역 순으로 표시해야 합니다. []
-● 살짝 위로 떠오르는 듯한 애니메이션과 투명도를 조절하는 애니메이션을
-적용해야 합니다. []
-● 등장 애니메이션의 duration은 700ms이고, 애니메이션 사이 간격은
-100ms입니다. []
+- **Github Repository URL** <br/> https://github.com/GyuJae/triple-project
+- **배포 URL** <br/> https://sweet-begonia-bf15b5.netlify.app/
 
-숫자가 올라가는 애니메이션
-● 각 숫자는 0부터 시작합니다.
-● 세 숫자 모두 2초 동안 증가하고, 동시에 끝나야 합니다.
-● 증가 속도가 느려지는 효과를 구현해야 합니다.
-● React와 DOM API만을 이용해 구현해야 합니다.
+<br/>
 
-● 컴포넌트를 어떻게 나누는지 평가합니다.
-● 적절한 위치에서 상태를 관리하는지 평가합니다.
-● 레이아웃을 구현하면서 적절한 마크업을 작성했는지 평가합니다.
-● 스타일을 잘 구현했는지 평가합니다.
-● Javascript를 잘 활용했는지 평가합니다.
-● 일관된 형식, 구조를 가진 코드인지 평가합니다.
-● 협업하기 좋은 개발자인지 평가합니다.
+# 🗂 프로젝트 소개
+- **개발 기간** 22.06.24 - 22.06.30
+- **개발자** 정규재
+- **프로젝트 개요** <br/>
+본 프로젝트는 Triple 기업과제입니다. 
+
+<br/>
+
+# 🔨 기술 스택
+
+|라이브러리|내용|
+|:---:|:---:|
+| styled components | css library  |
+| framer-motion | animation |
+| react-intersection-observer | dom library |
+| Netlify | Deploy |
+
+<br/>
+
+
+# 🏞 기능 설명 
+
+
+### 영역별 등장 애니메이션
+
+<details>
+    <summary>구현 방법</summary>
+
+
+Framer motion 라이브러리를 이용하여 등장 애니메이션을 구현하였다. framer motion을 이용하여 더 쉽고 유지 보수 하기 쉽게 애니메이션을 구현하였다. 
+
+<br />
+
+```tsx
+export const containerVar: Variants = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    }
+  }, 
+}
+
+export const itemVar: Variants = {
+  initial: { y: 30, opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.7
+    }
+  }
+}
+```
+
+</details>
+
+<br />
+
+### 숫자가 올라가는 애니메이션
+
+<details>
+    <summary>구현 방법</summary>
+
+
+useCountUp hooks을 만들어 숫자가 올가가는 애니메이션을 만들었고, react-intersection-observer를 이용하여 scroll해서 보일시에 작동하게 만들었다. 
+
+<br />
+
+```tsx
+import { useEffect, useState } from 'react'
+
+interface IProps {
+  end: number;
+  start?: number;
+  duration?: number;
+  isStart?: boolean
+}
+
+const slowNum = (t: number): number => {
+  return t === 1 ? 1 : 1 - Math.pow(2, -10 * t)
+}
+
+export const useCountUp = ({end, start = 0, duration = 2000, isStart = true}:IProps) => {
+  const [count, setCount] = useState(start)
+  const rate = 1000 / 60
+  const total = Math.round(duration / rate)
+
+  useEffect(() => {
+    if (isStart) {
+      const counter = setInterval(() => {
+        const progress = slowNum(++start / total)
+        setCount(Math.round(end * progress))
+        if (progress === 1) clearInterval(counter)
+      }, rate)
+    }
+  }, [end, rate, start, total, isStart])
+
+  return count
+}
+```
+
+</details>
+
+<br />
+
+
+
