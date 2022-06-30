@@ -1,4 +1,4 @@
-# 🔥 Wanted 개인과제 - 영화 웹 만들기
+# Triple 기업과제
 
 <img src="https://user-images.githubusercontent.com/58322754/176611633-de1d61ca-4efd-42d8-9f06-c8c6cc8a978c.png">
 
@@ -11,7 +11,7 @@
 - **개발 기간** 22.06.24 - 22.06.30
 - **개발자** 정규재
 - **프로젝트 개요** <br/>
-본 프로젝트는 Triple 기업과제입니다. 
+트리플 홈페이지의 한 섹션을 구현합니다. 
 
 <br/>
 
