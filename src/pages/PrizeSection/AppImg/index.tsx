@@ -15,9 +15,9 @@ const Image = styled.img`
 `
 
 const Date = styled.span`
+  position: absolute;
   bottom: 40px;
   opacity: 0.7;
-  position: absolute;
   font-size: 14px;
 `
 

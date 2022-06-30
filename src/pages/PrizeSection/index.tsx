@@ -5,9 +5,9 @@ import { motion } from 'framer-motion'
 import { containerVar } from '@/animations/prizeSection'
 
 const Wrapper = styled(motion.div)`
-  min-width: 1200px;
   display: flex;
   justify-content: center;
+  min-width: 1200px;
   column-gap: 200px;
 `
 

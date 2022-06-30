@@ -1,3 +1,5 @@
+import { useCountUp } from "@/hooks/useCountUp";
+import { useInView } from 'react-intersection-observer';
 import styled from "styled-components"
 
 interface IProps {
@@ -15,10 +17,12 @@ const Container = styled.div`
 `
 
 const Summary = ({ count, category, unit = '개' }: IProps) => {
+  const { ref, inView } = useInView({ triggerOnce: true })
+  const countValue = useCountUp({ end:count , isStart: inView})
   
   return (
-    <Container>
-      <strong>{count}만 {unit}</strong>
+    <Container ref={ref}>
+      <strong>{countValue}만 {unit}</strong>
       <span>의 {category}</span>
     </Container>
   )
